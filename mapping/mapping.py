@@ -48,3 +48,11 @@ class Mapping(object):
         # &FEF TBI
         ret = None
         return ret
+
+    def perform_mapping(self, sub_mapping, obj1, obj2):
+        """
+        &FEF TBD
+        """
+        # &FEF TBI
+        ret = None
+        return ret

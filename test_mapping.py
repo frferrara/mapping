@@ -13,6 +13,14 @@ from mapping.mapping    import Mapping
 from ruamel.yaml        import YAML
 from geometry_msgs.msg  import Pose as RPose
 from protobuf._Pose_pb2 import Pose as PPose
+from ruamel.ordereddict import ordereddict
+
+def print_ordereddict(dict_in):
+    for value in dict_in:
+        print isinstance(value, ordereddict)
+        if isinstance(value, ordereddict):
+            print_ordereddict(value)
+        print value
 
 # Load the configuration file
 FILE_OBJ = open("config.yaml")
@@ -20,6 +28,8 @@ YAML_OBJ = YAML()
 CONFIG = YAML_OBJ.load(FILE_OBJ)
 print "Yaml dump:"
 YAML_OBJ.dump(CONFIG, sys.stdout)
+print CONFIG
+print_ordereddict(CONFIG["mapping"])
 
 # Create the ROS message
 POSE_MSG = RPose()
