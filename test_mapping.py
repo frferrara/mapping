@@ -15,12 +15,25 @@ from geometry_msgs.msg  import Pose as RPose
 from protobuf._Pose_pb2 import Pose as PPose
 from ruamel.ordereddict import ordereddict
 
+"""
+Iterating through YAML --> base library on this
+-----------------------------------------------
+"""
 def print_ordereddict(dict_in):
     for value in dict_in:
-        print isinstance(value, ordereddict)
-        if isinstance(value, ordereddict):
-            print_ordereddict(value)
         print value
+        obj = dict_in[value]
+        if isinstance(obj, ordereddict):
+            print_ordereddict(obj)
+        if isinstance(obj, list):
+            print_list(obj)
+
+def print_list(list_in):
+    for value in list_in:
+        print value
+"""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""
 
 # Load the configuration file
 FILE_OBJ = open("config.yaml")
