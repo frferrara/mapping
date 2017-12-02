@@ -1,1 +1,7 @@
-#!/usr/bin/env python
+#!/bin/bash
+
+# Source the environment
+source ~/duckietown/environment.sh
+
+# Run the test script
+python test_mapping.py

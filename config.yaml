@@ -1,0 +1,13 @@
+# This is a configuration file for the fleet communication.
+# &FEF more TBD
+mapping:
+  Pose:
+    - position:
+      - x
+      - y
+      - z
+    - orientation:
+      - x
+      - y
+      - z
+      - w
