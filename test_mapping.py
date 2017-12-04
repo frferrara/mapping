@@ -14,6 +14,7 @@ from ruamel.yaml        import YAML
 from geometry_msgs.msg  import Pose as RPose
 from protobuf._Pose_pb2 import Pose as PPose
 from ruamel.ordereddict import ordereddict
+from protobuf._list_pb2 import List as PList
 
 """
 Iterating through YAML --> base library on this

@@ -3,5 +3,8 @@
 # Source the environment
 source ~/duckietown/environment.sh
 
+# Update PYTHONPATH
+export PYTHONPATH=/home/fef:$PYTHONPATH
+
 # Run the test script
 python test_mapping.py
