@@ -1,0 +1,13 @@
+mapping:
+  mixed:
+    - x
+    - pos:
+        - x
+        - y
+        - z
+    - ori:
+        - x
+        - y
+        - z
+        - w
+    - y

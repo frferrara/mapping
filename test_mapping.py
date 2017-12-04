@@ -11,6 +11,7 @@ C: 10, 0: Imports from package mapping are not grouped (ungrouped-imports)
 import sys
 from mapping.mapping    import Mapping
 from ruamel.yaml        import YAML
+import ruamel.yaml as ry
 from geometry_msgs.msg  import Pose as RPose
 from protobuf._Pose_pb2 import Pose as PPose
 from ruamel.ordereddict import ordereddict
@@ -46,6 +47,7 @@ print "Yaml dump:"
 YAML_OBJ.dump(CONFIG, sys.stdout)
 print CONFIG
 print_ordereddict(CONFIG["mapping"])
+FILE_OBJ.close()
 
 # Create the ROS message
 POSE_MSG = RPose()
@@ -88,6 +90,7 @@ print "r_list.z: {}".format(r_list.z)
 FILE_OBJ = open("list.yaml")
 YAML_OBJ = YAML()
 OBJ_MAP = YAML_OBJ.load(FILE_OBJ)
+FILE_OBJ.close()
 
 # Map the proto to the ROS list
 print OBJ_MAP
@@ -95,3 +98,21 @@ MAPPING.map_list(OBJ_MAP["list"], p_list, r_list)
 print "r_list.x: {}".format(r_list.x)
 print "r_list.y: {}".format(r_list.y)
 print "r_list.z: {}".format(r_list.z)
+
+# Map the ROS list to the proto
+r_list.x = 10.0
+r_list.y = 11.0
+r_list.z = 12.0
+MAPPING.map_list(OBJ_MAP["list"], r_list, p_list)
+print "p_list.x: {}".format(p_list.x)
+print "p_list.y: {}".format(p_list.y)
+print "p_list.z: {}".format(p_list.z)
+
+# Read the map file
+FILE_OBJ = open("mixed.yaml")
+YAML_OBJ = YAML()
+OBJ_MAP = YAML_OBJ.load(FILE_OBJ)
+FILE_OBJ.close()
+print OBJ_MAP
+print type(OBJ_MAP["mapping"]["mixed"][1])
+print type(OBJ_MAP["mapping"]["mixed"][1]) is ry.comments.CommentedMap

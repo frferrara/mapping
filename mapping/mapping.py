@@ -4,8 +4,9 @@ messages and protobufs.
 """
 
 # Import modules
-from ruamel.ordereddict import ordereddict
-from libreflection      import reflection as r
+from ruamel.ordereddict   import ordereddict
+from libreflection        import reflection as r
+from ruamel.yaml.comments import CommentedMap
 # &FEF TBD
 
 
