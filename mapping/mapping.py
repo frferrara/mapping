@@ -45,7 +45,7 @@ class Mapping(object):
                 # &FEF TBI
                 print "bla"
             elif isinstance(obj, list):
-                # &FEF TBI
+                # &FEF TBImplemented
                 print "bla"
             else:
                 # Map the elements in the list
