@@ -15,6 +15,8 @@ from geometry_msgs.msg  import Pose as RPose
 from protobuf._Pose_pb2 import Pose as PPose
 from ruamel.ordereddict import ordereddict
 from protobuf._list_pb2 import List as PList
+from dummy_ros.ros_list import List as RList
+from libreflection      import reflection as r
 
 """
 Iterating through YAML --> base library on this
@@ -69,3 +71,27 @@ POSE_PROTO.orientation.w = 1.0
 
 # Instantiate the mapping class
 MAPPING = Mapping(CONFIG)
+
+# Set the proto list
+p_list = PList()
+p_list.x = 4.0
+p_list.y = 5.0
+p_list.z = 6.0
+
+# Set the ROS list
+r_list = RList()
+print "r_list.x: {}".format(r_list.x)
+print "r_list.y: {}".format(r_list.y)
+print "r_list.z: {}".format(r_list.z)
+
+# Read the map file
+FILE_OBJ = open("list.yaml")
+YAML_OBJ = YAML()
+OBJ_MAP = YAML_OBJ.load(FILE_OBJ)
+
+# Map the proto to the ROS list
+print OBJ_MAP
+MAPPING.map_list(OBJ_MAP["list"], p_list, r_list)
+print "r_list.x: {}".format(r_list.x)
+print "r_list.y: {}".format(r_list.y)
+print "r_list.z: {}".format(r_list.z)

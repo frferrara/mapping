@@ -39,18 +39,20 @@ class Mapping(object):
         # Loop through the list
         for element in obj_map:
             # Get the object (in case it is a key)
-            obj = obj_map[element]
+            # obj = obj_map[element] --> &FEF wrong way to check this, TBD
             # Check the type
-            if isinstance(obj, ordereddict):
-                # &FEF TBI
-                print "bla"
-            elif isinstance(obj, list):
-                # &FEF TBI
-                print "bla"
-            else:
-                # Map the elements in the list
-                value = r.get_attr(element, obj_from)
-                r.set_attr(element, obj_to, value)
+            # if isinstance(obj, ordereddict):
+            #     # &FEF TBI
+            #     print "bla"
+            # elif isinstance(obj, list):
+            #     # &FEF TBI
+            #     print "bla"
+            # else:
+            # &FEF ELSE
+            # Map the elements in the list
+            value = r.get_attr(element, obj_from)
+            r.set_attr(element, obj_to, value)
+            # &FEF ELSE END
 
         return obj_to
 
