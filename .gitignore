@@ -1,2 +1,4 @@
 *.pyc
 *.pyo
+_Pose_pb2.py
+_list_pb2.py
