@@ -21,7 +21,7 @@ Iterating through YAML --> base library on this
 """
 def print_ordereddict(dict_in):
     for value in dict_in:
-        print value
+        print "element: %s" %value
         obj = dict_in[value]
         if isinstance(obj, ordereddict):
             print_ordereddict(obj)
